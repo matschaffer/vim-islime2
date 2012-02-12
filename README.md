@@ -42,3 +42,4 @@ Copyright &copy; Mat Schaffer. Distributed under the same terms as Vim itself. S
 * [Jonathan Palardy](https://github.com/jpalardy), for vim-slime, the original inspiration for this plugin.
 * [Troy Bollinger](http://code.google.com/p/iterm2/issues/detail?id=559) and [Patrick Bacon](http://spin.atomicobject.com/2011/09/27/run-tests-from-macvim/) for writing the AppleScript that helped me write my own.
 * [George Nachman](http://www.iterm2.com/) for writing iTerm2, easily the most bad-ass terminal emulator I know of.
+* [Lar Van Der Jagt](https://twitter.com/supaspoida), [Shay Arnett](https://twitter.com/shayarnett), [Josh Davey](https://twitter.com/joshuadavey) and [Robert Pitts](https://twitter.com/rbxbx) for the tweets that got me going on this
