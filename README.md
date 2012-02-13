@@ -4,6 +4,8 @@ SLIME-like support for running vim with iTerm2
 
 ## What is it?
 
+For the video-inclined [watch it here](http://youtu.be/f_HvdhAJKb4).
+
 It lets you send commands from Vim to an iTerm2 session. This is handy if you need to run a command repeatedly (like a test) and want to see the output. This is especially nice in text-mode Vim, but it should work fine from MacVim's GUI too.
 
 It works by using AppleScript to switch to the next iTerm2 Pane (using `Cmd+]`), writing the appropriate text then switching back (using `Cmd+[`).
