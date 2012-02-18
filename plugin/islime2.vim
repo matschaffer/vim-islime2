@@ -12,6 +12,12 @@ function! s:iTermRerun()
   endif
 endfunction
 
+" Send up and enter to re-run the previous command
+nnoremap <leader>fp :call <SID>iTermSendUpEnter()<CR>
+function! s:iTermSendUpEnter()
+  call s:iTermSendNext("OA")
+endfunction
+
 " Run script/deliver
 nnoremap <leader>fd :call <SID>iTermSendNext("./script/deliver")<CR>
 
