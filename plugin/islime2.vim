@@ -12,6 +12,9 @@ function! s:iTermRerun()
   endif
 endfunction
 
+" Run rake
+nnoremap <leader>fr :call <SID>iTermSendNext("rake")<CR>
+
 " Run file as a test (assumes ./script/test)
 nnoremap <leader>ft :call <SID>iTermRunTest(expand("%"))<CR>
 
