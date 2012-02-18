@@ -12,6 +12,9 @@ function! s:iTermRerun()
   endif
 endfunction
 
+" Run script/deliver
+nnoremap <leader>fd :call <SID>iTermSendNext("./script/deliver")<CR>
+
 " Run rake
 nnoremap <leader>fr :call <SID>iTermSendNext("rake")<CR>
 
