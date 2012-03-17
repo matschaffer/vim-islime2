@@ -8,10 +8,10 @@ command! -nargs=+ ISlime2 :call <SID>iTermSendNext("<args>")
 " Rerun the previous iSlime2 command
 nnoremap <leader>ff :call <SID>iTermRerun()<CR>
 function! s:iTermRerun()
-  if exists("t:islime2_last_command")
-    call s:iTermSendNext(t:islime2_last_command)
+  if exists("w:islime2_last_command")
+    call s:iTermSendNext(w:islime2_last_command)
   else
-    echoerr "No previous command. Try running a test first (with <leader>ft). Or you can store a command with `let t:islime2_last_command=\"my command\"`"
+    echoerr "No previous command. Try running a test first (with <leader>ft). Or you can store a command with `let w:islime2_last_command=\"my command\"`"
   endif
 endfunction
 
@@ -54,7 +54,7 @@ let s:current_file=expand("<sfile>")
 " Sends the passed command to the next iTerm2 panel using Cmd+]
 function! s:iTermSendNext(command)
   let l:run_command = fnamemodify(s:current_file, ":p:h:h") . "/scripts/run_command.scpt"
-  let t:islime2_last_command = a:command
+  let w:islime2_last_command = a:command
   call system("osascript " . l:run_command . " " . s:shellesc(a:command))
 endfunction
 
