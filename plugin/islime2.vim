@@ -2,6 +2,9 @@
 " Maintainer:   Mat Schaffer <http://matschaffer.com>
 " Version:      0.1
 
+" Allows running arbitrary command with :ISlime2
+command! -nargs=+ ISlime2 :call <SID>iTermSendNext("<args>")
+
 " Rerun the previous iSlime2 command
 nnoremap <leader>ff :call <SID>iTermRerun()<CR>
 function! s:iTermRerun()
