@@ -18,6 +18,14 @@ function! s:iTermSendUpEnter()
   call s:iTermSendNext("OA")
 endfunction
 
+" Send the current visual selection or paragraph
+inoremap <leader>cc <Esc>vip"ry:call <SID>iTermSendNext(@r)<CR>
+vnoremap <leader>cc "ry:call <SID>iTermSendNext(@r)<CR>
+nnoremap <leader>cc vip"ry:call <SID>iTermSendNext(@r)<CR>
+
+" Send the whole file
+nnoremap <leader>cf 1<S-v><S-g>"ry:call <SID>iTermSendNext(@r)<CR>
+
 " Run script/deliver
 nnoremap <leader>fd :call <SID>iTermSendNext("./script/deliver")<CR>
 
@@ -47,13 +55,6 @@ function! s:iTermSendNext(command)
   call system("osascript " . l:run_command . " " . s:shellesc(a:command))
 endfunction
 
-" From github.com/tpope/vim-fugitive
 function! s:shellesc(arg) abort
-  if a:arg =~ '^[A-Za-z0-9_/.-]\+$'
-    return a:arg
-  elseif &shell =~# 'cmd' && a:arg !~# '"'
-    return '"'.a:arg.'"'
-  else
-    return shellescape(a:arg)
-  endif
+  return '"'.escape(a:arg, '"').'"'
 endfunction
