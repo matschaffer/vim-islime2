@@ -6,7 +6,7 @@ SLIME-like support for running vim with iTerm2
 
 For the video-inclined [watch it here](http://www.youtube.com/watch?v=33Hz6OguYT8).
 
-It lets you send commands from Vim to an iTerm2 session. This is handy if you need to run a command repeatedly (like a test) and want to see the output. This is especially nice in text-mode Vim, but it should work fine from MacVim's GUI too.
+It lets you send commands from Vim to an iTerm2 session. This is handy if you need to run a command repeatedly (like a test) and want to see the output. This is especially nice in text-mode Vim, but it works fine from MacVim's GUI too.
 
 It works by using AppleScript to switch to the next iTerm2 Pane (using `Cmd+]`), writing the appropriate text then switching back (using `Cmd+[`).
 
@@ -23,16 +23,37 @@ At the moment rather than support all the possible testing methods I have `<lead
 
 Of course this wouldn't support focused unit testing. More on that to come soon.
 
+If you're using rspec, focused testing works just fine, like so:
+
+    #!/bin/sh
+    rspec "$@"
+
 ## Usage
+
+### For any commands
+
+* `ISlime2 echo hi mom` - runs "echo hi mom"
+* `<leader>ff` - re-runs the last run command
+* `<leader>fp` - equivalent to hitting up then enter in the terminal
+
+### For testing
 
 * `<leader>ft` - runs `script/test path/to/current/file`
 * `<leader>fT` - runs `script/test path/to/current/file:line_number`
-* `<leader>ff` - runs the last run command
-* `let t:islime2_last_command="rake"` - sets the last command to `rake` so we can run it with `<leader>ff`
+
+### For REPLs
+
+* `<leader>cc` - sends the current paragraph (using `vip`) or selection to the terminal
+* `<leader>cf` - sends the whole file to the terminal
+
+### Other helpers
+
+* `<leader>fr` - runs `rake`
+* `<leader>fd` - runs `script/deliver` which I use to merge to master and deploy to staging
 
 ## Contributions
 
-Are welcome! Pull request to your heart's content. I'd love to turn this into a general purpose testing tool. Also if you know how to make setting the last command easier (maybe `:iSlime <command>`), please let me know. I'm new to Vim scripting and couldn't figure this bit out.
+Are welcome! Pull request to your heart's content. I'd love to turn this into a general purpose development tool.
 
 ## License
 
