@@ -27,7 +27,7 @@ vnoremap <leader>cc "ry:call <SID>iTermSendNext(@r)<CR>
 nnoremap <leader>cc vip"ry:call <SID>iTermSendNext(@r)<CR>
 
 " Send the whole file
-nnoremap <leader>cf 1<S-v><S-g>"ry:call <SID>iTermSendNext(@r)<CR>
+nnoremap <leader>cf :%y r<cr>:call <SID>iTermSendNext(@r)<CR>
 
 " Run script/deliver
 nnoremap <leader>fd :call <SID>iTermSendNext("./script/deliver")<CR>
