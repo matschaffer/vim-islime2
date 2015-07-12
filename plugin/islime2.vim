@@ -55,7 +55,7 @@ let s:current_file=expand("<sfile>")
 function! s:iTermSendNext(command)
   let l:run_command = fnamemodify(s:current_file, ":p:h:h") . "/scripts/run_command.scpt"
   let g:islime2_last_command = a:command
-  call system("osascript " . l:run_command . " " . s:shellesc(a:command))
+  call system("osascript " . l:run_command . " " . s:shellesc(substitute(a:command, '\n$', '', '')))
 endfunction
 
 function! s:shellesc(arg) abort
