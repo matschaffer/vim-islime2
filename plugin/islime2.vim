@@ -27,7 +27,7 @@ vnoremap <leader>cc "ry:call <SID>iTermSendNext(@r)<CR>
 nnoremap <leader>cc vip"ry:call <SID>iTermSendNext(@r)<CR>
 
 " Send the whole file
-nnoremap <leader>cf 1<S-v><S-g>"ry:call <SID>iTermSendNext(@r)<CR>
+nnoremap <leader>cf :%y r<cr>:call <SID>iTermSendNext(@r)<CR>
 
 " Run script/deliver
 nnoremap <leader>fd :call <SID>iTermSendNext("./script/deliver")<CR>
@@ -55,7 +55,7 @@ let s:current_file=expand("<sfile>")
 function! s:iTermSendNext(command)
   let l:run_command = fnamemodify(s:current_file, ":p:h:h") . "/scripts/run_command.scpt"
   let g:islime2_last_command = a:command
-  call system("osascript " . l:run_command . " " . s:shellesc(a:command))
+  call system("osascript " . l:run_command . " " . s:shellesc(substitute(a:command, '\n$', '', '')))
 endfunction
 
 function! s:shellesc(arg) abort
