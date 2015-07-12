@@ -1,11 +1,19 @@
 on runInNextPane(_command)
   tell application "iTerm"
-    tell current terminal
-      tell i term application "System Events" to keystroke "]" using command down
+    set isRunning to (it is running)
+    set myterm to (current terminal)
+    try
+      set tmp to myterm
+    on error
+      set myterm to (make new terminal)
+    end try
+    tell myterm
+      if not isRunning then
+        activate
+      end if
       tell current session
         write text _command
       end tell
-      tell i term application "System Events" to keystroke "[" using command down
     end tell
   end tell
 end runInNextPane
