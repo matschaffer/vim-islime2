@@ -1,6 +1,6 @@
 on runInNextSession(theCommand)
-  tell application "iTerm-release"
-    tell current terminal
+  tell application "iTerm"
+    tell current tab of current window
       set currentSessionId to the id of current session
       repeat with i from 1 to count sessions
         set theId to the id of session i
@@ -13,11 +13,11 @@ on runInNextSession(theCommand)
       tell session i to write text theCommand
     end tell
   end tell
-end runInNextPane
+end runInNextSession
 
 on runInCurrentSession(theCommand)
   tell application "iTerm"
-    tell current session of current terminal
+    tell current session of current tab of current window
       write text theCommand
     end tell
   end tell
