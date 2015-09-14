@@ -1,5 +1,5 @@
 on runInNextSession(theCommand)
-  tell application "iTerm-release"
+  tell application "iTerm"
     tell current terminal
       set currentSessionId to the id of current session
       repeat with i from 1 to count sessions
