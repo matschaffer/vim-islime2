@@ -14,6 +14,12 @@ It works by using AppleScript to switch to the next iTerm2 Pane (using `Cmd+]`),
 
 Include with [Vundle](https://github.com/gmarik/vundle), [Pathogen](https://github.com/tpope/vim-pathogen) or drop the project files into your `~/.vim` directory. I use and test this with Vundle.
 
+If you're using this on iTerm 2.9 or above (nightly as of 2015/09/17), you'll also want to set "29" mode since the AppleScript interface has changed a bit. Use a command like so in your vimrc:
+
+```vim
+let g:islime2_29_mode=1
+```
+
 ## Caveats
 
 At the moment rather than support all the possible testing methods I have `<leader>ft` try to run `script/test` against the current file and `<leader>fT` pass the current file as `path:line_number`. I'll include a contrib directory with various testing tools in the near future but for now a simple `script/test` for Rails would be:
