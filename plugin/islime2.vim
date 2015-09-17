@@ -18,7 +18,7 @@ endfunction
 " Send up and enter to re-run the previous command
 nnoremap <leader>fp :call <SID>iTermSendUpEnter()<CR>
 function! s:iTermSendUpEnter()
-  call s:iTermSendNext("OA")
+  call s:iTermSendNext("OA")
 endfunction
 
 " Send the current visual selection or paragraph
@@ -53,11 +53,14 @@ let s:current_file=expand("<sfile>")
 
 " Sends the passed command to the next iTerm2 panel using Cmd+]
 function! s:iTermSendNext(command)
-  let l:run_command = fnamemodify(s:current_file, ":p:h:h") . "/scripts/run_command.scpt"
+  let l:script_name = (exists('g:islime2_29_mode') && g:islime2_29_mode == 1) ? 'run_command29' : 'run_command'
+
+  let l:run_command = fnamemodify(s:current_file, ":p:h:h") . "/scripts/" . l:script_name . ".scpt"
+
   let g:islime2_last_command = a:command
   let l:mode = has('gui_running') ? 'gui' : 'terminal'
-  call system("osascript " . l:run_command . " " . s:shellesc(
-        \ substitute(a:command, '\n$', '', '')) . " " . l:mode)
+  call system("osascript " . l:run_command . " " . l:mode . " " . s:shellesc(
+        \ substitute(a:command, '\n$', '', '')))
 endfunction
 
 function! s:shellesc(arg) abort
