@@ -59,10 +59,7 @@ function! s:iTermSendNext(command)
 
   let g:islime2_last_command = a:command
   let l:mode = has('gui_running') ? 'gui' : 'terminal'
-  call system("osascript " . l:run_command . " " . l:mode . " " . s:shellesc(
-        \ substitute(a:command, '\n$', '', '')))
-endfunction
+  let l:command = substitute(shellescape(substitute(a:command, '\n$', '', '')), '\\\n', '\n', 'g')
 
-function! s:shellesc(arg) abort
-  return '"'.escape(a:arg, '"').'"'
+  call system("osascript " . l:run_command . " " . l:mode . " " . l:command)
 endfunction
