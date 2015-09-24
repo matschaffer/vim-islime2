@@ -63,7 +63,3 @@ function! s:iTermSendNext(command)
 
   call system("osascript " . l:run_command . " " . l:mode . " " . l:command)
 endfunction
-
-function! s:shellesc(arg) abort
-  return '"'.escape(a:arg, '"').'"'
-endfunction
