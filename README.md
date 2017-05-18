@@ -53,23 +53,25 @@ vnoremap <silent> <Leader>i :<C-u>call islime2#iTermSendOperator(visualmode(), 1
 " Send the whole file
 nnoremap <leader>cf :%y r<cr>:call islime2#iTermSendNext(@r)<CR>
 
+" Send current section similar to a typical slime C-c, C-c
+inoremap <leader>cc <Esc>vip:<C-u>call islime2#iTermSendOperator(visualmode(), 1)<CR>
+vnoremap <leader>cc :<C-u>call islime2#iTermSendOperator(visualmode(), 1)<CR>
+nnoremap <leader>cc vip:<C-u>call islime2#iTermSendOperator(visualmode(), 1)<CR>
+
 " Rerun the previous iSlime2 command
 nnoremap <leader>ff :call islime2#iTermRerun()<CR>
 
-" Send up and enter to re-run the previous command
+" Send up and enter to re-run the previous command from shell history
 nnoremap <leader>fp :call islime2#iTermSendUpEnter()<CR>
-
-" Run script/deliver
-nnoremap <leader>fd :call islime2#iTermSendNext("./script/deliver")<CR>
 
 " Run rake
 nnoremap <leader>fr :call islime2#iTermSendNext("rake")<CR>
 
-" Run file as a test (assumes ./script/test)
+" Run a test script on the current file (assumes ./script/test)
 nnoremap <leader>ft :call islime2#iTermRunTest(expand("%"))<CR>
 remap <leader>ft :call islime2#iTermRunTest(expand("%"))<CR>")
 
-" Run focused unit test (assumes ./script/test understands file:line notation)
+" Run a test script on the current file and line
 nnoremap <leader>fT :call islime2#iTermRunTest(expand("%") . ":" . line("."))<CR>
 ```
 
